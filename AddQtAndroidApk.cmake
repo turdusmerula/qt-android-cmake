@@ -144,6 +144,9 @@ macro(add_qt_android_apk TARGET SOURCE_TARGET)
         set(QT_ANDROID_APP_EXTRA_LIBS "\"android-extra-libs\": \"${EXTRA_LIBS}\",")
     endif()
 
+    set(ANDROID_TOOLCHAIN_PREFIX ${ANDROID_TOOLCHAIN_NAME})
+    string(REGEX REPLACE "-[0-9].[0-9]$" "" ANDROID_TOOLCHAIN_PREFIX ${ANDROID_TOOLCHAIN_PREFIX})
+
     # make sure that the output directory for the Android package exists
     file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/libs/${ANDROID_ABI})
 
